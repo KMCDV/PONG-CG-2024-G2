@@ -9,10 +9,12 @@ public class Movement : MonoBehaviour
     public KeyCode UpKey;
     public KeyCode DownKey;
     public float speed = 2;
+    public float defaultSpeed;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        defaultSpeed = speed;
         rigidbody2D = GetComponent<Rigidbody2D>();
         print("Hello from start");
     }
@@ -20,7 +22,6 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (Input.GetKey(UpKey) && transform.position.y < 4)
         {
             rigidbody2D.velocity = Vector2.up * speed;
@@ -33,8 +34,6 @@ public class Movement : MonoBehaviour
         {
             rigidbody2D.velocity = Vector2.zero;
         }
-
-     
     }
 
     private void OnMouseDown()
